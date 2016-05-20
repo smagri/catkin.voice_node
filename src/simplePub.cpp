@@ -10,7 +10,7 @@
 #include "std_msgs/String.h"
 
 //#include "rosVoiceNode/include/rosVoiceNode_core.h"
-#include "rosVoiceNode_core.h"
+//#include "rosVoiceNode_core.h"
 
 #include <sstream>
 
@@ -39,10 +39,10 @@ int main(int argc, char **argv){
   ros::NodeHandle n;
 
   // Create a new object.
-  rosVoiceNode *rosVoiceNodePtr = new rosVoiceNode();
+//  voice_node *voice_nodePtr = new voice_node();
 
   // Define values for message variables.
-  string txt2say = "Hi there Simone";
+//  string txt2say = "Hi there Simone";
   //string voice2use = "nitech_us_slt_arctic_hts";
 
 
@@ -77,7 +77,7 @@ int main(int argc, char **argv){
 //    = n.advertise<std_msgs::String>("voiceNameTopic", nodeBufSize);
   int nodeBufSize = 1000;
   ros::Publisher txt4TTSpubObj
-    = n.advertise<rosVoiceNode::rosVoiceNode>("txt4TTStopic", 1000);
+    = n.advertise<voice_node::voice_node>("txt4TTStopic", 1000);
 
 
   
@@ -134,7 +134,7 @@ int main(int argc, char **argv){
     //  Send standard string message,  msg object, object type must be
     //  the same as in advertise().
     //txt4TTSpubObj.publish(txt4TTS)
-    rosVoiceNodePtr->publishMessage(&txt4TTSpubObj);
+    voice_nodePtr->publishMessage(&txt4TTSpubObj);
     //voiceNamePubObj.publish(voiceName);
 
     // So you can get callbacks.
