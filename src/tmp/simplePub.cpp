@@ -9,7 +9,8 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
-//#include "rosVoiceNode/voiceNode.h"
+//#include "rosVoiceNode/include/rosVoiceNode_core.h"
+//#include "rosVoiceNode_core.h"
 
 #include <sstream>
 
@@ -37,6 +38,13 @@ int main(int argc, char **argv){
   // nodeHandle = n
   ros::NodeHandle n;
 
+  // Create a new object.
+//  voice_node *voice_nodePtr = new voice_node();
+
+  // Define values for message variables.
+//  string txt2say = "Hi there Simone";
+  //string voice2use = "nitech_us_slt_arctic_hts";
+
 
   // The advertise()  function is  how you tell  ROS that you  want to
   // publish on  a given topic  name. This invokes  a call to  the ROS
@@ -62,15 +70,15 @@ int main(int argc, char **argv){
   // Message Buffer size = 1000 messages
   // Message Type is std_msgs/String
   //
+//  int nodeBufSize = 1000;
+//  ros::Publisher txt4TTSpubObj
+//    = n.advertise<std_msgs::String>("txt4TTStopic", nodeBufSize);
+//  ros::Publisher voiceNamePubObj
+//    = n.advertise<std_msgs::String>("voiceNameTopic", nodeBufSize);
   int nodeBufSize = 1000;
   ros::Publisher txt4TTSpubObj
-    = n.advertise<std_msgs::String>("txt4TTStopic", nodeBufSize);
-  ros::Publisher voiceNamePubObj
-    = n.advertise<std_msgs::String>("voiceNameTopic", nodeBufSize);
+    = n.advertise<voice_node::voice_node>("txt4TTStopic", 1000);
 
-  //ros::Publisher txt4TTSpubObj;
-  //char txt4TTS[100] = "hi there simone";
-  //char voiceName[50] = "nitech_us_slt_arctic_hts";
 
   
   // Specifies the frequency that you  would like to loop at.  It will
@@ -95,16 +103,15 @@ int main(int argc, char **argv){
     //    std_msgs::String txt4TTS = "hi there simone";
     //    std_msgs::String voiceName = "nitech_us_slt_arctic_hts";
     //
-    std_msgs::String txt4TTS;
-    std::stringstream ss1;
-    ss1 << "Hi there simone";
-    txt4TTS.data = ss1.str();
+    // std_msgs::String txt4TTS;
+    // std::stringstream ss1;
+    // ss1 << "Hi there simone";
+    // txt4TTS.data = ss1.str();
 
-    std_msgs::String voiceName;
-    std::stringstream ss2;
-    ss2 << "nitech_us_slt_arctic_hts";
-    voiceName.data = ss2.str();
-
+    // std_msgs::String voiceName;
+    // std::stringstream ss2;
+    // ss2 << "nitech_us_slt_arctic_hts";
+    // voiceName.data = ss2.str();
     
     // Broadcast to the world, rosout and other subscribers to the topic.
     // ROS_INFO..etc replaces printf/cout.
@@ -116,8 +123,8 @@ int main(int argc, char **argv){
     // debug
     //fprintf(stderr, "Say text: %s\n", txt4TTS);
     //fprintf(stderr, "Using the voice: %s\n", voiceName);
-    ROS_INFO( "%s", txt4TTS.data.c_str() );
-    ROS_INFO( "%s", voiceName.data.c_str() );
+    //ROS_INFO( "%s", txt4TTS.data.c_str() );
+    //ROS_INFO( "%s", voiceName.data.c_str() );
     
     // The publish() function is  how you send messages. The parameter
     // is the message object. The  type of this object must agree with
@@ -126,8 +133,9 @@ int main(int argc, char **argv){
     //
     //  Send standard string message,  msg object, object type must be
     //  the same as in advertise().
-    txt4TTSpubObj.publish(txt4TTS);
-    voiceNamePubObj.publish(voiceName);
+    //txt4TTSpubObj.publish(txt4TTS)
+    voice_nodePtr->publishMessage(&txt4TTSpubObj);
+    //voiceNamePubObj.publish(voiceName);
 
     // So you can get callbacks.
     ros::spinOnce();
