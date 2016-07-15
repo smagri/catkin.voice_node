@@ -104,7 +104,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES voice_node
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#   CATKIN_DEPENDS roscpp rospy std_msgs
    CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
@@ -185,11 +185,19 @@ include_directories( ${catkin_INCLUDE_DIRS} )
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
-add_executable(simplePub src/simplePub.cpp)
+# talker node build
+#
+#add_executable(simplePub src/simplePub.cpp)
+# don't use main.cpp instead for simplePub_node.cpp
+add_executable(simplePub src/simplePub.cpp src/simplePub_node.cpp)
 target_link_libraries(simplePub ${catkin_LIBRARIES})
 add_dependencies(simplePub voice_node_generate_messages_cpp)
 
-add_executable(simpleSub src/simpleSub.cpp)
+
+# listener node build
+#
+#add_executable(simpleSub src/simpleSub.cpp)
+add_executable(simpleSub src/simpleSub.cpp src/simpleSub_node.cpp)
 target_link_libraries(simpleSub ${catkin_LIBRARIES})
 add_dependencies(simpleSub voice_node_generate_messages_cpp)
 

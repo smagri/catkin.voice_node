@@ -6,7 +6,11 @@
 #include "ros/time.h"
 
 // Custom message includes. Auto-generated from msg/ directory.
-#include "voice_node/voice_node.h"
+// //#include "voice_node/voice_node.h"
+
+//#include "voice_node/simplePub.h"
+#include "std_msgs/String.h"
+//#include <sstream>
 
 
 namespace voice_node{
@@ -30,9 +34,14 @@ namespace voice_node{
     ros::Publisher voiceNamePubObj;
 
     // The actual message.
+//    std::string txt4TTS;
+//    std::string voiceName;;
+    std_msgs::String txt4TTS;
+    std_msgs::String voiceName;;
+    //std::string msg;
     //std::string message_;
     //std::string message_;
-};
+  };
 
 
 }

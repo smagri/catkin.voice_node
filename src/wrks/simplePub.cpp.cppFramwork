@@ -5,13 +5,12 @@
 
 
 #include "ros/ros.h"
-//#include "std_msgs/String.h"
+#include "std_msgs/String.h"
 
 #include <sstream>
 
 // for this to work must have: include_directories(include) in CMakeLists.txt
 #include "voice_node/simplePub.h"
-//#include "voice_node/voice_node.h"
 
 
 namespace voice_node{
@@ -42,12 +41,12 @@ namespace voice_node{
   
     // This is a message object. You stuff it with data, and then publish it.
     //
-    // std_msgs::String txt4TTS;
+    std_msgs::String txt4TTS;
     std::stringstream ss1;
-    ss1 << "Hi there Simone";
+    ss1 << "Hi there simone";
     txt4TTS.data = ss1.str();
   
-    //std_msgs::String voiceName;
+    std_msgs::String voiceName;
     std::stringstream ss2;
     ss2 << "nitech_us_slt_arctic_hts";
     voiceName.data = ss2.str();
@@ -58,16 +57,13 @@ namespace voice_node{
     ROS_INFO( "%s", txt4TTS.data.c_str() );
     ROS_INFO( "%s", voiceName.data.c_str() );
     
-//    voice_node::voice_node msg;
-    //voice_node::txt4TTS;
-//    msg.txt4TTS = txt4TTS.data;
-//    msg.voiceName = voiceName.data; 
+    voice_node::voice_node msg;
+    msg.txt4TTS = txt4TTS.data;
+    msg.voiceName = voiceName.data; 
     
     //  Send standard string message, object type must be as in advertise().
-//    txt4TTSpubObj.publish(msg.txt4TTS);
-//    voiceNamePubObj.publish(msg.voiceName);
-    txt4TTSpubObj.publish(txt4TTS);
-    voiceNamePubObj.publish(voiceName);
+    txt4TTSpubObj.publish(msg.txt4TTS);
+    voiceNamePubObj.publish(msg.voiceName);
   }
 
 

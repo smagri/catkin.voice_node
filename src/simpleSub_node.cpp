@@ -1,14 +1,13 @@
-#include "voice_node/simplePub.h"
+#include "voice_node/simpleSub.h"
 
 int main(int argc, char **argv)
 {
   // Set up ROS.
-  ros::init(argc, argv, "simplePub");
+  ros::init(argc, argv, "simpleSub");
   ros::NodeHandle nh;
 
   // Create a new node_example::Talker object.
-  //node_example::ExampleTalker node(nh);
-  voice_node::voiceSimplePub node(nh);
+  voice_node::voiceSimpleSub node(nh);
 
   // Let ROS handle all callbacks.
   ros::spin();
