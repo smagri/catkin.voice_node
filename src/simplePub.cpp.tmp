@@ -5,13 +5,13 @@
 
 
 #include "ros/ros.h"
+//#include "std_msgs/String.h"
 
 #include <sstream>
 
 // for this to work must have: include_directories(include) in CMakeLists.txt
-// #include "voice_node/voice_node.h"
 #include "voice_node/simplePub.h"
-
+//#include "voice_node/voice_node.h"
 
 
 namespace voice_node{
@@ -40,7 +40,6 @@ namespace voice_node{
       
   void voiceSimplePub::timerCallback(const ros::TimerEvent& event){
   
-
     // This is a message object. You stuff it with data, and then publish it.
     //
     // std_msgs::String txt4TTS;
@@ -53,24 +52,20 @@ namespace voice_node{
     ss2 << "nitech_us_slt_arctic_hts";
     voiceName.data = ss2.str();
     
-/*    txt4TTS[100] = "Hi there Simone";
-      voiceName[100] = "nitech_us_slt_arctic_hts"; */
-
     // Broadcast to the world, rosout and other subscribers to the topic.
     // ROS_INFO..etc replaces printf/cout.
     //
     ROS_INFO( "%s", txt4TTS.data.c_str() );
     ROS_INFO( "%s", voiceName.data.c_str() );
     
-    // voice_node::voice_node msg;
-    // voice_node::txt4TTS;
-    // msg.txt4TTS = txt4TTS.data;
-    // msg.voiceName = voiceName.data; 
+//    voice_node::voice_node msg;
+    //voice_node::txt4TTS;
+//    msg.txt4TTS = txt4TTS.data;
+//    msg.voiceName = voiceName.data; 
     
     //  Send standard string message, object type must be as in advertise().
-    //
-    //  txt4TTSpubObj.publish(msg.txt4TTS);
-    //  voiceNamePubObj.publish(msg.voiceName);
+//    txt4TTSpubObj.publish(msg.txt4TTS);
+//    voiceNamePubObj.publish(msg.voiceName);
     txt4TTSpubObj.publish(txt4TTS);
     voiceNamePubObj.publish(voiceName);
   }

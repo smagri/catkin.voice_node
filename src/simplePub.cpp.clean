@@ -40,7 +40,6 @@ namespace voice_node{
       
   void voiceSimplePub::timerCallback(const ros::TimerEvent& event){
   
-
     // This is a message object. You stuff it with data, and then publish it.
     //
     // std_msgs::String txt4TTS;
@@ -53,9 +52,6 @@ namespace voice_node{
     ss2 << "nitech_us_slt_arctic_hts";
     voiceName.data = ss2.str();
     
-/*    txt4TTS[100] = "Hi there Simone";
-      voiceName[100] = "nitech_us_slt_arctic_hts"; */
-
     // Broadcast to the world, rosout and other subscribers to the topic.
     // ROS_INFO..etc replaces printf/cout.
     //
