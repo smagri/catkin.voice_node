@@ -9,7 +9,11 @@
 // //#include "voice_node/voice_node.h"
 
 #include "std_msgs/String.h"
+
 #include <sstream>
+#include <unistd.h>
+#include <sound_play/sound_play.h>
+
 
 
 namespace voice_node{
@@ -24,12 +28,19 @@ namespace voice_node{
     void txt4TTStopicCallback(const std_msgs::String::ConstPtr& msg);
     void voiceNameTopicCallback(const std_msgs::String::ConstPtr& msg);
 
+    std::string voiceName;
+    std::string sayText;
+
 
   private:
     
     // Message Subscriber
     ros::Subscriber txt4TTSsubObj;
     ros::Subscriber voiceNameSubObj;
+
+    sound_play::SoundClient sndClient;
+
+
   };
 
 

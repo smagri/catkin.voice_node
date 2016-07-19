@@ -38,6 +38,7 @@ namespace voice_node{
     // char txt4TTS[100];
     std_msgs::String txt4TTS;
     std_msgs::String voiceName;
+    std_msgs::String voiceName1;
   };
 
 

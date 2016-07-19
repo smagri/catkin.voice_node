@@ -6,6 +6,7 @@ int main(int argc, char **argv){
   ros::init(argc, argv, "simpleSub");
   ros::NodeHandle nh;
 
+
   // Create a new node_example::Talker object.
   voice_node::voiceSimpleSub node(nh);
 
