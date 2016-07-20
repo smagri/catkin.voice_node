@@ -1,0 +1,52 @@
+20july2016
+
+Status of code before driving to melbourne tomorrow.
+
+
+Remember you need the following to run to get any sound coming out,
+soundplay_node.py talks to the sound driver/card.
+
+rosrun sound_play soundplay_node.py 
+
+
+cls; ./simplePub
+cls; ./simpleSub
+
+
+This produces the following output:
+
+[ INFO] [1469007443.101039184]: Hi there Simone
+[ INFO] [1469007443.101132261]: nitech_us_slt_arctic_hts
+[ INFO] [1469007444.100542103]: Hi there Simone
+[ INFO] [1469007444.100636433]: nitech_us_slt_arctic_hts
+
+and
+
+
+[ INFO] [1469007433.101588117]: txt4TTStcbk: I heard: [Hi there Simone]
+txt4TTStcbk: dbg: I heard: voice = voice_kal_diphone
+[ INFO] [1469007438.101953841]: voiceNameTcbk: with voice: [nitech_us_slt_arctic_hts]
+voiceNameTcbk: dbg: voice = nitech_us_slt_arctic_hts
+[ INFO] [1469007438.102069664]: txt4TTStcbk: I heard: [Hi there Simone]
+txt4TTStcbk: dbg: I heard: voice = nitech_us_slt_arctic_hts
+[ INFO] [1469007443.102346310]: voiceNameTcbk: with voice: [nitech_us_slt_arctic_hts]
+voiceNameTcbk: dbg: voice = nitech_us_slt_arctic_hts
+[ INFO] [1469007443.102469512]: txt4TTStcbk: I heard: [Hi there Simone]
+txt4TTStcbk: dbg: I heard: voice = nitech_us_slt_arctic_hts
+^C[ INFO] [1469007444.193598017]: voiceNameTcbk: with voice: [nitech_us_slt_arctic_hts]
+voiceNameTcbk: dbg: voice = nitech_us_slt_arctic_hts
+
+
+There appears to be a problem  with changing voices on the sound card.
+Which  can be  somewhat reproduced  with the  following  two commands.
+Looking at say.py  code gives no clues I can  tell. So essentially, if
+you don't leave  a big enough gap between command 1)  and 2) below the
+voice does  not change.  The same  appears to be happening  in my code
+but there  sleeping for  5 or  10 seconds does  not help.   So perhaps
+there is some command to be issued to the soundcard/sound_play_node.py
+to get the sound card to accept a new voice.
+
+1) rosrun sound_play say.py "hello world" voice_kal_diphone
+2) rosrun sound_play say.py "hello world" voice_nitech_us_slt_arctic_hts
+
+

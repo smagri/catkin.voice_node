@@ -30,15 +30,15 @@ namespace voice_node{
       nh.advertise<std_msgs::String>("voiceNameTopic",nodeBufSize);
     
     // timerCallback call rate is 1/rate, or rateHz. 
-    //int rate = 10;
-    int rate = 5;
+    //int rate = 10; // for 1/rate frequency
+    int rate = 1; // for rate frequency
     
     // Create timer callback function.
     // Fast and possibly unrealistic rate:
-    // timerObj = nh.createTimer(ros::Duration(1/rate),
-    //		  &voiceSimplePub::timerCallback, this);
-    timerObj = nh.createTimer(ros::Duration(rate),
+    timerObj = nh.createTimer(ros::Duration(1/rate),
 			      &voiceSimplePub::timerCallback, this);
+//    timerObj = nh.createTimer(ros::Duration(rate),
+//			      &voiceSimplePub::timerCallback, this);
   }
 
       
@@ -55,9 +55,10 @@ namespace voice_node{
     std::stringstream ss2;
     ss2 << "nitech_us_slt_arctic_hts";
     voiceName.data = ss2.str();
-    std::stringstream ss3;
+
+/*    std::stringstream ss3;
     ss3 << "nitech_us_awb_arctic_hts";
-    voiceName1.data = ss3.str();
+    voiceName1.data = ss3.str(); */
     
 /*    txt4TTS[100] = "Hi there Simone";
       voiceName[100] = "nitech_us_slt_arctic_hts"; */
@@ -67,7 +68,7 @@ namespace voice_node{
     //
     ROS_INFO( "%s", txt4TTS.data.c_str() );
     ROS_INFO( "%s", voiceName.data.c_str() );
-    //ROS_INFO( "%s", voiceName1.data.c_str() );
+//    ROS_INFO( "%s", voiceName1.data.c_str() );
     
     // voice_node::voice_node msg;
     // voice_node::txt4TTS;
@@ -80,9 +81,8 @@ namespace voice_node{
     //  voiceNamePubObj.publish(msg.voiceName);
     txt4TTSpubObj.publish(txt4TTS);
     voiceNamePubObj.publish(voiceName);
-    //voiceNamePubObj.publish(voiceName1);
-
-    
+//    voiceNamePubObj.publish(voiceName1);
+  
   }
 
 

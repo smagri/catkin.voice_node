@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <sound_play/sound_play.h>
 
+using namespace std;
 
 
 namespace voice_node{
@@ -28,7 +29,7 @@ namespace voice_node{
     void txt4TTStopicCallback(const std_msgs::String::ConstPtr& msg);
     void voiceNameTopicCallback(const std_msgs::String::ConstPtr& msg);
 
-    std::string voiceName;
+    std::string voice;
     std::string sayText;
 
 

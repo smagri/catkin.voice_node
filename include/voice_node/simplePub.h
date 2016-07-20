@@ -9,6 +9,7 @@
 // Custom message includes. Auto-generated from msg/ directory.
 // #include "voice_node/voice_node.h"
 
+using namespace std;
 
 
 namespace voice_node{
